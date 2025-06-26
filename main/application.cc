@@ -87,6 +87,11 @@ Application::Application() {
         .skip_unhandled_events = true
     };
     esp_timer_create(&clock_timer_args, &clock_timer_handle_);
+
+    // 创建个定时器来实时检测人脸
+    // 如果画面中有多个人呢？同一时间只能有一个会话，所以要求小智只能把当前对话记忆到某一个人的session上去
+    // 小智是和个人账户绑定的，所以小智从本质来讲是个私人设备
+    // 如果将小智当作一个公共平台，后台会话管理可能会需要较大改动
 }
 
 Application::~Application() {
@@ -883,7 +888,6 @@ void Application::OnAudioInput() {
     // 初始网络热点设置可以通过网页或者扫描二维码的方式，二维码的方式比手动输入网址友好！！但是这部分可以作为nice to have
 
     // 是不是通过mcp工具设置更简单呢？的确是mcp方法e
-
 
 
     if (wake_word_->IsDetectionRunning()) {
