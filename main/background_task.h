@@ -8,7 +8,8 @@
 #include <condition_variable>
 #include <atomic>
 
-class BackgroundTask {
+class 
+BackgroundTask {
 public:
     BackgroundTask(uint32_t stack_size = 4096 * 2);
     ~BackgroundTask();

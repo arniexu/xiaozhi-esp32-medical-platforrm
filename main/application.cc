@@ -854,7 +854,7 @@ void Application::OnAudioOutput() {
 }
 
 void Application::OnAudioInput() {
-    if (device_state_ == kDeviceStateAudioTesting) {
+    if (device_state_ == kDeviceStateAudioTesting) { // test mode
         if (audio_testing_queue_.size() >= AUDIO_TESTING_MAX_DURATION_MS / OPUS_FRAME_DURATION_MS) {
             ExitAudioTestingMode();
             return;
@@ -875,6 +875,16 @@ void Application::OnAudioInput() {
             return;
         }
     }
+
+    // 如何通过声音设置唤醒词呢？-> 唤醒词好像可以通过mcp工具来设置
+
+    // 聊天过程中可以通过mcp工具修改热点及设置联网密码
+
+    // 初始网络热点设置可以通过网页或者扫描二维码的方式，二维码的方式比手动输入网址友好！！但是这部分可以作为nice to have
+
+    // 是不是通过mcp工具设置更简单呢？的确是mcp方法e
+
+
 
     if (wake_word_->IsDetectionRunning()) {
         std::vector<int16_t> data;

@@ -13,7 +13,7 @@
 #include "audio_processor.h"
 #include "audio_codec.h"
 
-class AfeAudioProcessor : public AudioProcessor {
+class  : public AudioProcessor {
 public:
     AfeAudioProcessor();
     ~AfeAudioProcessor();
